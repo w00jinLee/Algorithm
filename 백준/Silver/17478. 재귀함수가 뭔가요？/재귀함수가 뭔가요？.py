@@ -7,26 +7,20 @@ lastComment = ["\"재귀함수는 자기 자신을 호출하는 함수라네\"",
 N = int(input())
 
 def func(n):
-    if n < -N :
-        return
-    # N=2일떄 n=2, 1, 0 -1, -2
-    # N=4일떄 n=4,3,2,1,0,-1,-2,-3,-4
-
-    if n > 0:
-        print((N-n)*underbar + questionComment)
-        print((N-n)*underbar + answerComment[0])
-        print((N-n)*underbar + answerComment[1])
-        print((N-n)*underbar + answerComment[2])
-    # # N =2일 때 - answercomment n=2일떄 출력, n=1일때 출력, n= 0일때 출력 x
-    elif n==0 :
-        print((N-n)*underbar + questionComment) 
-        print((N-n)*underbar + lastComment[0])
-        print((N-n)*underbar + lastComment[1])
-    elif n < 0 : # n=-1일때, N+n=1, n=-2일때 N+n=0
-        print((N+n)*underbar+lastComment[1])
     
-    return func(n-1)
-
-
+    if n == N :
+        print(underbar*n + questionComment)
+        print(underbar*n + lastComment[0])
+        print(underbar*n + lastComment[1])
+        return
+    else : 
+        print(underbar*n + questionComment)
+        print(underbar*n + answerComment[0])
+        print(underbar*n + answerComment[1])
+        print(underbar*n + answerComment[2])
+        func(n+1)
+        
+        print(underbar*n + lastComment[1])        
+    
 print(startComment)
-func(N)
+func(0)
